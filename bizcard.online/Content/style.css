@@ -207,8 +207,13 @@ ul.list li { margin-bottom: 13px }
 .light { color: #fff !important }
 
 .dark { color: #000 !important }
-
-.wrap { overflow: hidden }
+ 
+.wrap {
+    overflow: hidden;
+    background-image: url(/images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
 .page-mask {
     width: 100%;
