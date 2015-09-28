@@ -5,11 +5,16 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <a><i class="fa fa-phone"></i> Call Us : 647-444-0805</a>
-        <i class="fa fa-edit"></i>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        <i class="fa fa-sign-in"></i><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a> 
+    <ul class="navbar-right" style="list-style: none;">
+        <li class="dropdown">
+            <a href="#" id="userDropdown" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;Admin <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdown">
+                <li>@Html.ActionLink("Manage", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a> </li>
+                <li class="divider"></li>
+                <li><a href="/Admin">Dashboard</a></li>
+            </ul>
+        </li>
     </ul>
     }
 }
