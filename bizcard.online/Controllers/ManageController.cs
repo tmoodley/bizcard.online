@@ -64,8 +64,10 @@ namespace bizcard.online.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            ApplicationUser user = UserManager.FindByNameAsync(User.Identity.Name).Result;
             var model = new IndexViewModel
             {
+                User = user,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -73,6 +75,50 @@ namespace bizcard.online.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+        // GET: /Manage/Index
+        public async Task<ActionResult> Edit()
+        {   
+            ApplicationUser user = UserManager.FindByNameAsync(User.Identity.Name).Result; 
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(ApplicationUser model)
+        {
+            var user = UserManager.FindByEmail(model.Email);
+
+            if (user != null)
+            {
+                // populate the user object 
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Title = model.Title;
+
+                user.Email = model.Email;
+                user.Website = model.Website;
+                user.Address1 = model.Address1;
+                user.Address2 = model.Address2;
+                user.City = model.City;
+                user.Country = model.Country;
+                user.PostalCode = model.PostalCode;
+
+                user.BusinessNumber = model.BusinessNumber;
+                user.PhoneNumber = model.PhoneNumber;
+                user.FaxNumber = model.FaxNumber;
+                user.DirectNumber = model.DirectNumber;
+            } 
+              
+            // and not in the database 
+            var result = await UserManager.UpdateAsync(user);  // Checking that we really found the user to update
+            // If we get an error, we return to list of Users
+            // (You should log the error and also return the user to the form)
+            if (!result.Succeeded) return RedirectToAction("Edit", "Manage");
+                
+            // Returning the user to the list of users
+            return RedirectToAction("Index", "Manage");
         }
 
         //

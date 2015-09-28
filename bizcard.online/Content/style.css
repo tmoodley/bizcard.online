@@ -1831,12 +1831,17 @@ footer .contact-us a { color: #fff !important }
 textarea { height: 133px !important }
 
 .form-control {
-    margin-bottom: 25px;
-    height: 62px;
+    margin-bottom: 8px;
+    height: 35px;
     border-color: #dddddd;
     box-shadow: none;
+    padding: 2px;
+    margin: 2px;
 }
-
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 5px;
+}
 #contactform span.required {
     font-size: 13px;
     color: #ff0000;

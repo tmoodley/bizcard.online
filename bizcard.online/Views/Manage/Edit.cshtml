@@ -1,0 +1,119 @@
+﻿@model bizcard.online.Models.ApplicationUser
+@{
+    ViewBag.Title = "Edit";
+}
+@using (Html.BeginForm("Edit", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row businesscard">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-0"></div>
+                            <div class="col-lg-6 col-xs-12"><img src="~/images/logo-site.png" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="pull-left col-sm-6">
+                                <div class="row">
+                                    <div class="form-group col-sm-5">
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.FirstName)
+                                    </div>
+                                    <div class="form-group col-sm-5">
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.LastName)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-10">
+                                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control col-md-12" })
+                                        @Html.ValidationMessageFor(model => model.Title)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="pull-right col-sm-6">
+                                <div class="row">
+                                    <div class="form-group col-sm-5">
+                                        @Html.TextBoxFor(m => m.Address1, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.Address1)
+                                    </div>
+                                    <div class="form-group col-sm-5">
+                                        @Html.TextBoxFor(m => m.Address2, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.Address2)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        @Html.TextBoxFor(m => m.City, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.City)
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        @Html.TextBoxFor(m => m.State, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.State)
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.PostalCode)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.DirectNumber, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6"> 
+                                        @Html.TextBoxFor(m => m.DirectNumber, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.DirectNumber)
+                                    </div> 
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.BusinessNumber, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6">
+                                        @Html.TextBoxFor(m => m.BusinessNumber, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.BusinessNumber)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.FaxNumber, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6">
+                                        @Html.TextBoxFor(m => m.FaxNumber, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.FaxNumber)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6">
+                                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.LabelFor(m => m.Website, new { @class = "col-md-5 control-label" })
+                                    <div class="form-group col-sm-6">
+                                        @Html.TextBoxFor(m => m.Website, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.Website)
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-offset-10 col-md-12">
+                                    <input type="submit" class="btn btn-primary" value="Save" />
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

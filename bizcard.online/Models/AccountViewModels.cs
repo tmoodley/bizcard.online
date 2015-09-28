@@ -65,7 +65,15 @@ namespace bizcard.online.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -79,6 +87,42 @@ namespace bizcard.online.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Address 1")]
+        public string Address1 { get; set; }
+        [Display(Name = "Address 2")]
+        public string Address2 { get; set; }
+        [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+        [Required]
+        [Display(Name = "State")]
+        public string State { get; set; }
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
+        [Required]
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+        [Required]
+        [Display(Name = "Cell Number")]
+        public string PhoneNumber { get; set; }
+        [Required]
+        [Display(Name = "Direct Number")]
+        public string DirectNumber { get; set; }
+        [Required]
+        [Display(Name = "Fax Number")]
+        public string FaxNumber { get; set; }
+        [Required]
+        [Display(Name = "Business Number")]
+        public string BusinessNumber { get; set; }
+        [Required]
+        [Display(Name = "Website")]
+        public string Website { get; set; }
+        [Required]
+        [Display(Name = "Title")]
+        public string Title { get; set; }  
     }
 
     public class ResetPasswordViewModel
