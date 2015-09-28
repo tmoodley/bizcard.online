@@ -109,6 +109,8 @@ namespace bizcard.online.Controllers
                 user.PhoneNumber = model.PhoneNumber;
                 user.FaxNumber = model.FaxNumber;
                 user.DirectNumber = model.DirectNumber;
+
+                user.ImageName = model.ImageName;
             } 
               
             // and not in the database 

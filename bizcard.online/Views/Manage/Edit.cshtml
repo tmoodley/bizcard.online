@@ -12,7 +12,28 @@
                     <div class="row businesscard">
                         <div class="row">
                             <div class="col-lg-6 col-xs-0"></div>
-                            <div class="col-lg-6 col-xs-12"><img src="~/images/logo-site.png" /></div>
+                            <div class="col-lg-6 col-xs-12"><img src="~/images/@Model.ImageName" /></div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="ImageName">Image</label>
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.ImageName)
+
+                                    @(Html.Kendo().Upload()
+                                    .Name("files")
+                                    .Async(a => a
+                                        .Save("Save", "Upload")
+                                        .Remove("Remove", "Upload")
+                                        .AutoUpload(true)
+                                    )
+                                    .Events(events => events
+                                        .Remove("onRemove")
+                                        .Select("onSelect")
+                                        .Success("onSuccess")
+                                    )
+                                                            )
+                                </div>
+                            </div>
+
                         </div>
                         <div class="row">
                             <div class="pull-left col-sm-6">
@@ -116,4 +137,40 @@
             </div>
         </div>
     </div>
+    <script>
+
+    function onSuccess(e) {
+        $('#ImageName').val(getFileInfo(e));
+    }
+
+    function onSelect(e) {
+        if(getFileSize(e) > 240){
+            $('#ImageName').val('');
+            alert('Please choose an image less than 240kb');
+        }
+    }
+
+    function onRemove(e) {
+        $('#ImageName').val('');
+    }
+
+    function getFileInfo(e) {
+        return $.map(e.files, function (file) {
+            var info = file.name;
+            return info;
+        });
+    }
+
+      function getFileSize(e) {
+          return $.map(e.files, function (file) {
+              var info = "";
+
+              // File size is not available in all browsers
+              if (file.size > 0) {
+                  info += Math.ceil(file.size / 1024);
+              }
+              return info;
+          });
+    }
+    </script>
 }
