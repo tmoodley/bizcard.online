@@ -30,7 +30,7 @@
                                         .Select("onSelect")
                                         .Success("onSuccess")
                                     )
-                                                            )
+                                    )
                                 </div>
                             </div>
 
@@ -82,10 +82,10 @@
                                 </div>
                                 <div class="row">
                                     @Html.LabelFor(m => m.DirectNumber, new { @class = "col-md-5 control-label" })
-                                    <div class="form-group col-sm-6"> 
+                                    <div class="form-group col-sm-6">
                                         @Html.TextBoxFor(m => m.DirectNumber, new { @class = "form-control col-md-6" })
                                         @Html.ValidationMessageFor(model => model.DirectNumber)
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="row">
                                     @Html.LabelFor(m => m.BusinessNumber, new { @class = "col-md-5 control-label" })
@@ -109,11 +109,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                                    @Html.LabelFor(m => m.BusinessEmail, new { @class = "col-md-5 control-label" })
                                     <div class="form-group col-sm-6">
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-6" })
-                                        @Html.ValidationMessageFor(model => model.Email)
-                                    </div>
+                                        @Html.TextBoxFor(m => m.BusinessEmail, new { @class = "form-control col-md-6" })
+                                        @Html.ValidationMessageFor(model => model.BusinessEmail)
+                                        @Html.HiddenFor(m => m.Email)
+                                   </div>
                                 </div>
                                 <div class="row">
                                     @Html.LabelFor(m => m.Website, new { @class = "col-md-5 control-label" })
@@ -121,7 +122,7 @@
                                         @Html.TextBoxFor(m => m.Website, new { @class = "form-control col-md-6" })
                                         @Html.ValidationMessageFor(model => model.Website)
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -131,7 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
@@ -139,38 +140,38 @@
     </div>
     <script>
 
-    function onSuccess(e) {
-        $('#ImageName').val(getFileInfo(e));
-    }
-
-    function onSelect(e) {
-        if(getFileSize(e) > 240){
-            $('#ImageName').val('');
-            alert('Please choose an image less than 240kb');
+        function onSuccess(e) {
+            $('#ImageName').val(getFileInfo(e));
         }
-    }
 
-    function onRemove(e) {
-        $('#ImageName').val('');
-    }
+        function onSelect(e) {
+            if (getFileSize(e) > 240) {
+                $('#ImageName').val('');
+                alert('Please choose an image less than 240kb');
+            }
+        }
 
-    function getFileInfo(e) {
-        return $.map(e.files, function (file) {
-            var info = file.name;
-            return info;
-        });
-    }
+        function onRemove(e) {
+            $('#ImageName').val('');
+        }
 
-      function getFileSize(e) {
-          return $.map(e.files, function (file) {
-              var info = "";
+        function getFileInfo(e) {
+            return $.map(e.files, function (file) {
+                var info = file.name;
+                return info;
+            });
+        }
 
-              // File size is not available in all browsers
-              if (file.size > 0) {
-                  info += Math.ceil(file.size / 1024);
-              }
-              return info;
-          });
-    }
+        function getFileSize(e) {
+            return $.map(e.files, function (file) {
+                var info = "";
+
+                // File size is not available in all browsers
+                if (file.size > 0) {
+                    info += Math.ceil(file.size / 1024);
+                }
+                return info;
+            });
+        }
     </script>
 }

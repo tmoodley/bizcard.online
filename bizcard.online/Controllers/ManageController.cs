@@ -96,8 +96,8 @@ namespace bizcard.online.Controllers
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
                 user.Title = model.Title;
-
                 user.Email = model.Email;
+                user.BusinessEmail = model.BusinessEmail;
                 user.Website = model.Website;
                 user.Address1 = model.Address1;
                 user.Address2 = model.Address2;

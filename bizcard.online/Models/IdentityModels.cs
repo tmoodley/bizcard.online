@@ -12,7 +12,10 @@ namespace bizcard.online.Models
     { 
         public string Bio { get; set; }
         public string PersonalLink { get; set; }
-
+        [Display(Name = "User Id")]
+        public string UserId { get; set; }
+        [Display(Name = "BusinessEmail")]
+        public string BusinessEmail { get; set; }
         public string ImageName { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

@@ -151,7 +151,7 @@ namespace bizcard.online.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address1 = model.Address1, Address2 = model.Address2, City = model.City, State = model.State, PostalCode = model.PostalCode, Country = model.Country, FaxNumber = model.FaxNumber, PhoneNumber = model.PhoneNumber, DirectNumber = model.DirectNumber, Website = model.Website, Title = model.Title }; 
+                var user = new ApplicationUser() { UserName = model.Email, UserId = model.UserId, BusinessEmail = model.BusinessEmail, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address1 = model.Address1, Address2 = model.Address2, City = model.City, State = model.State, PostalCode = model.PostalCode, Country = model.Country, FaxNumber = model.FaxNumber, PhoneNumber = model.PhoneNumber, DirectNumber = model.DirectNumber, Website = model.Website, Title = model.Title }; 
                 var result = await UserManager.CreateAsync(user, model.Password);
                   
                 if (result.Succeeded)

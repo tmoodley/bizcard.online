@@ -36,7 +36,10 @@ namespace bizcard.online.Controllers
         // GET: Card
         public ActionResult Index(string id)
         {
-            ApplicationUser user = UserManager.FindByNameAsync(User.Identity.Name).Result;
+            ApplicationUser user;
+            using (var db = new ApplicationDbContext()) {
+                user = db.Users.FirstOrDefault(x => x.UserId == id);
+            }
             return View(user);
         }
     }

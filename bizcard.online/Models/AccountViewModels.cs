@@ -73,9 +73,18 @@ namespace bizcard.online.Models
         public string LastName { get; set; }
 
         [Required]
+        [Display(Name = "User Id")]
+        public string UserId { get; set; }
+
+        [Required]
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
+        [Display(Name = "Business Email")]
+        public string BusinessEmail { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
