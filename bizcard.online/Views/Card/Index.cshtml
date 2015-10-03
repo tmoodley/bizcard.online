@@ -29,7 +29,7 @@
                                 Fax:     @Model.FaxNumber<br />
                                 Cell:    @Model.PhoneNumber<br />
                                 Email:   @Model.BusinessEmail<br />
-                                Website: @Model.Website<br />
+                                Website: @UrlShortener.Shorten(@Model.Website)<br />
                             </div>
                         </div>
                     </div>

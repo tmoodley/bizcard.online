@@ -11,6 +11,7 @@ namespace bizcard.online
 {
     public partial class Startup
     {
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -54,15 +55,15 @@ namespace bizcard.online
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "649090648564315",
+               appSecret: "0784f0f0e153364308a5dc29dd2897d6");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1012152117079-t0hai9c9vl6avs38rac2i5llgtvbsfhs.apps.googleusercontent.com",
+                ClientSecret = "eEPuPJF-iLUK2wOfn56gegoV"
+            });
         }
     }
 }
