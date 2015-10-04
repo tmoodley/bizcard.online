@@ -201,6 +201,7 @@
     <Compile Include="Framework\EmailService.cs" />
     <Compile Include="Framework\ImageHelpers.cs" />
     <Compile Include="Framework\phasher.cs" />
+    <Compile Include="Framework\TemplateService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -730,6 +731,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Templates\BizcardTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using seoWebApplication.Framework;
+using bizcard.online.Framework;
 
 namespace bizcard.online.Controllers
 {
@@ -58,13 +59,14 @@ namespace bizcard.online.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(ApplicationUser model, string emailToSend)
+        public ActionResult Index(string emailToSend)
         {
-            var emailToSend2 = emailToSend;
+            ApplicationUser user = UserManager.FindByNameAsync(User.Identity.Name).Result;
+            var template = TemplateService.SendBizCard(user);
             //send email
-            emailSend.SendGrid(emailToSend, "RE: New Contact", "Here is your new contact from Bizcard.Online");
+            emailSend.SendGrid(emailToSend, "RE: Bizcard from " + user.FirstName + " " + user.LastName, template);
             // Returning the user to the list of users
-            return RedirectToAction("Index", "Card");
+            return RedirectToAction("Index", "Admin");
         }
     }
 }
