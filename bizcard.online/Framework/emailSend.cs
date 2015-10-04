@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net.Mail;
 using System.Net;
+using SendGrid;
 
 namespace seoWebApplication.Framework
 {
@@ -57,6 +58,49 @@ namespace seoWebApplication.Framework
     
             }
             catch 
+            {
+                return false;
+            }
+        }
+
+        public static bool SendGrid(string To, string Subject, string Body)
+        {
+            try
+            {
+                var FromSendGridEmailAddress = ConfigurationManager.AppSettings["FromSendGridEmailAddress"].ToString();
+                var FromSendGridEmailDisplayName = ConfigurationManager.AppSettings["FromSendGridEmailDisplayName"].ToString();
+
+                // Create network credentials to access your SendGrid account
+                var username = ConfigurationManager.AppSettings["SendGridUserName"].ToString();
+                var pswd = ConfigurationManager.AppSettings["SendGridPassword"].ToString();
+
+                /* Alternatively, you may store these credentials via your Azure portal
+                   by clicking CONFIGURE and adding the key/value pairs under "app settings".
+                   Then, you may access them as follows: 
+                   var username = System.Environment.GetEnvironmentVariable("SENDGRID_USER"); 
+                   var pswd = System.Environment.GetEnvironmentVariable("SENDGRID_PASS");
+                   assuming you named your keys SENDGRID_USER and SENDGRID_PASS */
+
+                var credentials = new NetworkCredential(username, pswd);
+
+                // Create the email object first, then add the properties.
+                SendGridMessage myMessage = new SendGridMessage();
+                myMessage.AddTo(To);
+                myMessage.From = new MailAddress(FromSendGridEmailAddress, FromSendGridEmailDisplayName);
+                myMessage.Subject = Subject;
+                myMessage.Html = Body;
+
+                // Create an Web transport for sending email.
+                var transportWeb = new Web(credentials);
+
+                // Send the email.
+                // You can also use the **DeliverAsync** method, which returns an awaitable task.
+                transportWeb.DeliverAsync(myMessage);
+
+                return true;
+
+            }
+            catch
             {
                 return false;
             }

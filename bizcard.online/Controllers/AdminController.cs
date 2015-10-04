@@ -1,27 +1,41 @@
 ﻿using bizcard.online.Models;
 using System;
-using System.Collections.Generic; 
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using seoWebApplication.Framework;
 
 namespace bizcard.online.Controllers
 {
-    public class CardController : Controller
-    { 
+    public class AdminController : Controller
+    {
+        private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public CardController()
+        public AdminController()
         {
         }
-        public CardController(ApplicationUserManager userManager)
+
+        public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            UserManager = userManager; 
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
 
         public ApplicationUserManager UserManager
@@ -35,13 +49,10 @@ namespace bizcard.online.Controllers
                 _userManager = value;
             }
         }
-        // GET: Card
-        public ActionResult Index(string id)
+        // GET: Dashboard
+        public ActionResult Index()
         {
-            ApplicationUser user;
-            using (var db = new ApplicationDbContext()) {
-                user = db.Users.FirstOrDefault(x => x.UserId == id);
-            }
+            ApplicationUser user = UserManager.FindByNameAsync(User.Identity.Name).Result;
             return View(user);
         }
 
