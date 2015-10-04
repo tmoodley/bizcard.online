@@ -102,15 +102,15 @@ namespace bizcard.online.Controllers
                 user.Address1 = model.Address1;
                 user.Address2 = model.Address2;
                 user.City = model.City;
+                user.State = model.State;
                 user.Country = model.Country;
                 user.PostalCode = model.PostalCode;
-
                 user.BusinessNumber = model.BusinessNumber;
                 user.PhoneNumber = model.PhoneNumber;
                 user.FaxNumber = model.FaxNumber;
                 user.DirectNumber = model.DirectNumber;
-
                 user.ImageName = model.ImageName;
+                user.UserId = model.FirstName + model.LastName;
             } 
               
             // and not in the database 
