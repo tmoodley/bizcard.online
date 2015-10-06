@@ -17,7 +17,7 @@ namespace bizcard.online.Framework
 
             html = html.Replace("<firstname>", user.FirstName);
             html = html.Replace("<lastname>", user.LastName);
-            html = html.Replace("<title>", user.Title.ToString());
+            html = html.Replace("<worktitle>", user.Title.ToString());
             html = html.Replace("<address1>", user.Address1);
             html = html.Replace("<address2>", user.Address2);
             html = html.Replace("<city>", user.City);
