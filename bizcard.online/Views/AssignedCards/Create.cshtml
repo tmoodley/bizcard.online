@@ -4,14 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Send Card</h2>
 
 @using (Html.BeginForm( null, null, FormMethod.Post, new { id="cards_add_" + ViewBag.Id })) 
 {
     
     
     <div class="form-horizontal">
-        <h4>AssignedCards</h4>
+        <h4>Please Type in Email Address and a special Message</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,7 +24,7 @@
           
         <div class="form-group">
             <div class="col-md-10">
-                <input type="hidden" id="FromEmail" value="@ViewBag.UserId" />
+                <input type="hidden" id="FromEmail" name="FromEmail" value="@ViewBag.UserId" />
             </div>
         </div>
 
@@ -63,7 +63,4 @@
             error: this.ajaxFailure
         });
     }); 
-</script>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</script> 

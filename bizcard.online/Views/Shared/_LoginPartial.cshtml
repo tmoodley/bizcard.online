@@ -9,6 +9,7 @@
             <a href="#" id="userDropdown"><i class="fa fa-user"></i>&nbsp;Admin <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdown">
                 <li>@Html.ActionLink("Manage", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li>@Html.ActionLink("Cards", "Send", "Cards", routeValues: null, htmlAttributes: new { title = "Send Bizcards" })</li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a> </li>
                 <li class="divider"></li>
                 <li><a href="/Admin">Dashboard</a></li>

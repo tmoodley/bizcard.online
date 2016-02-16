@@ -240,6 +240,14 @@
     <Compile Include="Migrations\201602151644411_added link to cards.Designer.cs">
       <DependentUpon>201602151644411_added link to cards.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602160247019_added required field validation.cs" />
+    <Compile Include="Migrations\201602160247019_added required field validation.Designer.cs">
+      <DependentUpon>201602160247019_added required field validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602160356217_Removed min requirement for message..cs" />
+    <Compile Include="Migrations\201602160356217_Removed min requirement for message..Designer.cs">
+      <DependentUpon>201602160356217_Removed min requirement for message..cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssignedCards.cs" />
@@ -965,6 +973,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602151644411_added link to cards.resx">
       <DependentUpon>201602151644411_added link to cards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602160247019_added required field validation.resx">
+      <DependentUpon>201602160247019_added required field validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602160356217_Removed min requirement for message..resx">
+      <DependentUpon>201602160356217_Removed min requirement for message..cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
