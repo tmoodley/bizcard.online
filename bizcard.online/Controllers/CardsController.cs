@@ -18,34 +18,12 @@ namespace bizcard.online.Controllers
         public ActionResult Index()
         {
             return View(db.Cards.ToList());
-        }
-
-        // GET: Cards
-        public ActionResult View()
-        {
-            return View(db.Cards.ToList());
-        }
+        } 
 
         // GET: Cards
         public ActionResult Send()
         {
-            return View();
-        }
-
-        // POST: Cards/Send
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Send([Bind(Include = "Id,Name,Description,ImageName")] AssignedCards AssignedCards)
-        {
-            if (ModelState.IsValid)
-            {
-                
-                return RedirectToAction("Index");
-            }
-
-            return View(AssignedCards);
+            return View(db.Cards.ToList());
         }
 
         // GET: Cards/Details/5

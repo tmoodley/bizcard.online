@@ -65,7 +65,7 @@ namespace bizcard.online.Controllers
                     emailSend.SendGrid(assignedCards.ToEmail, "RE: " + card.Name, template); 
                 }
                
-                return Json(new { redirect = "/Cards/View/" });
+                return Json(new { redirect = "/Cards/Send/" });
             }
             return null;
             //return View(assignedCards);

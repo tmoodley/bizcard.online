@@ -922,7 +922,6 @@
     <Content Include="Views\Cards\Details.cshtml" />
     <Content Include="Views\Cards\Edit.cshtml" />
     <Content Include="Views\Cards\Index.cshtml" />
-    <Content Include="Views\Cards\View.cshtml" />
     <Content Include="Views\Cards\Send.cshtml" />
     <Content Include="Views\AssignedCards\Create.cshtml" />
     <Content Include="Views\AssignedCards\Delete.cshtml" />

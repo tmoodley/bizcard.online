@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Cards</h4>
         <hr />
@@ -34,10 +34,10 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10"> 
+            <div class="col-md-10">
                 @Html.HiddenFor(model => model.ImageName)
-                <img width ="200px" src="/images/@Html.DisplayFor(model => model.ImageName)">
-                    @(Html.Kendo().Upload()
+                <img width="200px" src="/images/@Html.DisplayFor(model => model.ImageName)">
+                @(Html.Kendo().Upload()
                     .Name("files")
                     .Async(a => a
                     .Save("Save", "Upload")
@@ -49,8 +49,8 @@
                     .Select("onSelect")
                     .Success("onSuccess")
                     )
-                    )
-</div>
+                )
+            </div>
         </div>
 
         <script>
