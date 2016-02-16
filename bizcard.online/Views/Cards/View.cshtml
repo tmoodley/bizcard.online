@@ -1,0 +1,66 @@
+﻿@model IEnumerable<bizcard.online.Models.Cards>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td> 
+            <img width="200px" src="/images/@Html.DisplayFor(modelItem => item.ImageName)">
+        </td>
+        <td> 
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal_@Html.DisplayFor(modelItem => item.Id)">Send Card</button>
+
+            <!-- Modal -->
+            <div id="myModal_@Html.DisplayFor(modelItem => item.Id)" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Send Card</h4>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Action("Create", "AssignedCards", new { id = item.Id })
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+           
+        </td>
+    </tr>
+}
+
+</table>

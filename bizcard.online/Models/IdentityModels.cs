@@ -59,6 +59,9 @@ namespace bizcard.online.Models
         {
         }
 
+        public DbSet<Cards> Cards { get; set; }
+        public DbSet<AssignedCards> AssignedCards { get; set; } 
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

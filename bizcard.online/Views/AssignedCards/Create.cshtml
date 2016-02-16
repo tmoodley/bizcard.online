@@ -1,0 +1,69 @@
+﻿@model bizcard.online.Models.AssignedCards
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm( null, null, FormMethod.Post, new { id="cards_add_" + ViewBag.Id })) 
+{
+    
+    
+    <div class="form-horizontal">
+        <h4>AssignedCards</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ToEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ToEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+          
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="hidden" id="FromEmail" value="@ViewBag.UserId" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group"> 
+            <div class="col-md-10">
+                <input type="hidden" id="CardId" name="CardId" value="@ViewBag.Id" /> 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" id="add_@ViewBag.Id" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $('#add_@ViewBag.Id').click(function () {
+    $.ajax({
+            cache: false,
+            url: '/AssignedCards/Create/',
+            data: $('#cards_add_@ViewBag.Id').serialize(),
+            type: 'post',
+            success: function (result) {
+                location.href = result.redirect;
+            },
+            complete: this.resetLoadWaiting,
+            error: this.ajaxFailure
+        });
+    }); 
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

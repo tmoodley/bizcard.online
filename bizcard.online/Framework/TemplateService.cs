@@ -33,5 +33,15 @@ namespace bizcard.online.Framework
             return html;
             
         }
+
+        public static string SendCard(string imageurl, string message)
+        {
+            string html = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Templates/CardTemplate.html"));
+
+            html = html.Replace("<logo>", imageurl.ToString());
+            html = html.Replace("<message>", message.ToString());
+            return html;
+
+        }
     }
 }
