@@ -51,16 +51,42 @@
 }
 <script type="text/javascript">
     $('#add_@ViewBag.Id').click(function () {
-    $.ajax({
-            cache: false,
-            url: '/AssignedCards/Create/',
-            data: $('#cards_add_@ViewBag.Id').serialize(),
-            type: 'post',
-            success: function (result) {
-                location.href = result.redirect;
-            },
-            complete: this.resetLoadWaiting,
-            error: this.ajaxFailure
-        });
+        var values = $('#cards_add_@ViewBag.Id').serialize(); 
+       
+        var numbersArray = values.split('&');
+        var value1 = numbersArray[0].split('=');
+        var email = value1[1];
+       
+        var value2 = numbersArray[2].split('='); 
+        var message = value2[1];
+       
+        var emailOkay = false;
+        var messageOkay = false;
+        if (email.length > 0) {
+            emailOkay = true;
+        } 
+            
+        if (message.length > 0) {
+            messageOkay = true; 
+        }
+
+        if(emailOkay === true && messageOkay === true)
+        { 
+            $.ajax({
+                cache: false,
+                url: '/AssignedCards/Create/',
+                data: $('#cards_add_@ViewBag.Id').serialize(),
+                type: 'post',
+                success: function (result) {
+                    location.href = result.redirect;
+                },
+                complete: this.resetLoadWaiting,
+                error: this.ajaxFailure
+            }); 
+        }
+        else {
+            alert('Please add an Email and Message!')
+        }
+    
     }); 
 </script> 
